@@ -20,13 +20,15 @@ Uvicorn running on http://0.0.0.0:8000
 然后在浏览器中访问：
 [`http://127.0.0.1:8000`](http://127.0.0.1:8000)
 ##  API 密钥配置
-项目已预配置演示用的 API Key，在 `.env` 文件中：
+项目已预配置演示用的 API Key，在 `env.env` 文件中：
 ```env
 DEEPSEEK_API_KEY=sk-062383a35bb748ca8d797dec962f44f2
 ```
-如需更换为个人 API Key，请修改 `.env` 文件：
+如需更换为个人 API Key，请修改 `env.env` 文件：
 ##  Docker 容器化部署
+（切换目录，并且sudo su ）
 ### 单容器部署（简单快速）
+用的是根目录的Dockerfile
 ```bash
 # 构建 Docker 镜像
 docker build -t deepseek-chat -f docker-config/Dockerfile .
@@ -34,7 +36,7 @@ docker build -t deepseek-chat -f docker-config/Dockerfile .
 docker run -d \
   --name deepseek-chat \
   -p 8000:8000 \
-  --env-file .env \
+  --env-file env.env \
   deepseek-chat
 # 查看运行状态
 docker ps
@@ -42,7 +44,6 @@ docker ps
 docker logs deepseek-chat
 ```
 ### 多容器编排部署（生产推荐）
-使用 Docker Compose 部署包含 Nginx 反向代理的完整解决方案：
 ```bash
 # 进入配置目录
 cd docker-config
@@ -52,6 +53,11 @@ docker-compose up -d
 docker-compose ps
 # 实时查看日志
 docker-compose logs -f
+```
+
+停止容器
+```
+docker stop deepseek-chat
 # 停止所有服务
 docker-compose down
 ```
@@ -86,10 +92,12 @@ git clone https://github.com/vgwbdzzq52-rgb/deepseek-chat.git
 cd deepseek-chat
 # 创建虚拟环境
 python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
 .\.venv\Scripts\Activate.ps1  # Windows
 # 安装开发依赖
 pip install -r requirements.txt
 # 启动开发服务器
 python main.py
 ```
+
+然后在浏览器中访问：
+[`http://127.0.0.1:8000`](http://127.0.0.1:8000)
