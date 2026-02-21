@@ -1,4 +1,5 @@
 # DeepSeek 聊天助手 Web 应用
+这个文件主要是ai写的部署操作。我记录的项目说明在[[https://github.com/vgwbdzzq52-rgb/deepseek-chat/blob/main/ai聊天网站记录md笔记/寒假作业/homework.md]]
 >  基于 FastAPI 和 DeepSeek 大模型构建的ai聊天网站，
 ## 二、环境准备
 ```bash
