@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"67f91f00f100fcf2","type":"text","text":"前端","x":-1080,"y":-860,"width":900,"height":50,"color":"1"},
+		{"id":"f2ec8a59679e46ee","type":"text","text":"后端","x":-160,"y":-860,"width":260,"height":50,"color":"1"},
+		{"id":"813f75fa89d68f41","type":"text","text":"js","x":-539,"y":-806,"width":319,"height":50,"color":"4"},
+		{"id":"6932c684841e810f","type":"text","text":"HTML","x":-1100,"y":-786,"width":295,"height":30,"color":"2"},
+		{"id":"acebe5efba9a78be","type":"text","text":"26 input id=\"chat-input\" type=\"text\" placeholder=\"请输入","x":-1150,"y":-738,"width":490,"height":56,"color":"3"},
+		{"id":"6f912850fdc25992","x":-80,"y":-836,"width":180,"height":50,"color":"5","type":"text","text":"main.py"},
+		{"id":"ea473f8ba139c277","x":-280,"y":-559,"width":560,"height":254,"color":"5","type":"text","text":"24         response = client.chat.completions.create(\n25             model=\"deepseek-chat\",\n26             messages=[\n27                 {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n28                 {\"role\": \"user\", \"content\": message},  \n29             ],\n30             stream=False,\n31         )\n32 return {\"message\": response.choices[0].message.content or \"\"}"},
+		{"id":"ad45460899af2e57","x":-140,"y":-738,"width":320,"height":111,"color":"5","type":"text","text":"19 @app.post(\"/chat\")\n20 async def chat(msg: Message):  \n21     message = msg.message "},
+		{"id":"52025018664d1b38","x":-578,"y":-756,"width":355,"height":60,"color":"4","type":"text","text":"98      const message = inputElement.value;"},
+		{"id":"6202d08a1b18f24b","x":-716,"y":-627,"width":276,"height":188,"color":"4","type":"text","text":"108     fetch('/chat', {\n109         method: 'POST',\n110         headers: { 'Content-Type': 'application/json' },\n111         body: JSON.stringify({ \n112             message: message  "},
+		{"id":"6fe5c7240d4bdfac","x":-660,"y":-399,"width":365,"height":212,"color":"4","type":"text","text":"120     .then(data => {  \n121         if (loadingElement) loadingElement.style.display = 'none';\n122         setInputDisabled(false);\n125         if (data.message) {  \n126             displayMessage('bot', data.message); \n127         } "},
+		{"id":"dc6976f7aeadaf51","x":-1240,"y":-533,"width":484,"height":319,"color":"4","type":"text","text":"65  function displayMessage(role, message) {\n67      const messagesContainer = document.getElementById('messages');\n68      const messageElement = document.createElement('div');\n69      messageElement.className = `message ${role}`;\n73      const messageContent = document.createElement('div');\n74      messageContent.className = 'message-content';\n77      messageContent.innerHTML = role === 'user' ? escapeHtml(message) : formatMessage(message);"}
+	],
+	"edges":[
+		{"id":"f1454430c0504831","fromNode":"52025018664d1b38","fromSide":"bottom","toNode":"6202d08a1b18f24b","toSide":"top","label":"2，转为JSON {message}"},
+		{"id":"f6e7148defbceb71","fromNode":"6202d08a1b18f24b","fromSide":"right","toNode":"ad45460899af2e57","toSide":"left","label":"3，接收提取成Message对象\n存入message变量中"},
+		{"id":"bcd0abe23ec4e168","fromNode":"acebe5efba9a78be","fromSide":"bottom","toNode":"52025018664d1b38","toSide":"left","label":"1，输入框存进 message字段"},
+		{"id":"608339dfc35ec485","fromNode":"ad45460899af2e57","fromSide":"bottom","toNode":"ea473f8ba139c277","toSide":"top","label":"4，传给deepseek\n获取ai回复"},
+		{"id":"9b01f1391b31d500","fromNode":"ea473f8ba139c277","fromSide":"bottom","toNode":"6fe5c7240d4bdfac","toSide":"right","label":"5，接收并检查是否有message"},
+		{"id":"f0b0b658d75491d9","fromNode":"6fe5c7240d4bdfac","fromSide":"left","toNode":"dc6976f7aeadaf51","toSide":"bottom","label":"6，显示消息"}
+	]
+}
